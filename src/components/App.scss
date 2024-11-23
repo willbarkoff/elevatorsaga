@@ -1,0 +1,49 @@
+@import "nord/src/sass/nord.scss";
+
+html,
+body,
+#root {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $nord0;
+    color: $nord4;
+
+    font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    a {
+        color: $nord8;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: dotted underline;
+        }
+    }
+}
+
+.App {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: calc(100vh - 64px);
+
+        justify-content: space-between;
+
+        .major-section.editor {
+            width: calc(75vw - 5px);
+        }
+
+        .major-section.simulator {
+            width: calc(25vw - 5px);
+        }
+    }
+}
