@@ -1,0 +1,39 @@
+@import "nord/src/sass/nord.scss";
+
+.Toast {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+
+    &.normal {
+        background-color: $nord3;
+    }
+
+    &.light {
+        background-color: $nord6;
+        color: $nord1
+    }
+
+    &.red {
+        background-color: $nord11;
+    }
+
+    &.orange {
+        background-color: $nord12;
+    }
+
+    &.yellow {
+        background-color: $nord13;
+        color: $nord3;
+    }
+
+    &.green {
+        background-color: $nord14;
+        color: $nord3
+    }
+
+    &.purple {
+        background-color: $nord15;
+    }
+}

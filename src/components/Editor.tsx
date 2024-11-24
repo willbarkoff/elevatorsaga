@@ -1,6 +1,6 @@
 import MonacoEditor, { EditorProps } from "@monaco-editor/react"
-import placeholder from "../placeholder.ts?raw"
-
+import { useEffect } from "react"
+import { useToast } from "./Toaster"
 
 const monacoProps: EditorProps = {
 	height: "100%",
@@ -15,9 +15,27 @@ const monacoProps: EditorProps = {
 	theme: "nord"
 }
 
-const Editor = () => {
+interface editorProps {
+	editorState: string
+	handleEditorChange: (newValue: string) => void
+}
+
+const Editor = ({ editorState, handleEditorChange }: editorProps) => {
+	const toast = useToast()
+
+	useEffect(() => {
+		const listener = (e: KeyboardEvent) => {
+			if ((e.metaKey || e.ctrlKey) && e.code === "KeyS") {
+				toast({ content: "Don't worry! Your data is saved automatically.", style: "normal", timeout: 3000 })
+				e.preventDefault();
+			}
+		}
+		document.addEventListener("keydown", listener, false);
+		return () => document.removeEventListener("keydown", listener, false)
+	})
+
 	return <>
-		<MonacoEditor defaultValue={placeholder} language="typescript" {...monacoProps} />
+		<MonacoEditor language="typescript" value={editorState} onChange={(value) => value && handleEditorChange(value)} {...monacoProps} />
 	</>
 }
 
